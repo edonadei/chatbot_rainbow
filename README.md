@@ -1,4 +1,4 @@
-﻿# Rainbow chatbot 🤖
+﻿# Rainbow chatbot 🤖🌈
 
 ![screen_app](screenshot_chatbot.png)
 
