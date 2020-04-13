@@ -82,7 +82,7 @@ rainbowSDK.start().then(() => {
       `${message.conversation.contact._displayName}: ${message.content}`
     );
     //console.log(message)
-    runChatbot(projectId, "hello", "", res => {
+    runChatbot(projectId, message.content, "", res => {
       rainbowSDK.im
         .sendMessageToJid(res, message.fromJid)
         .then(console.log("We sent the response"));
@@ -93,6 +93,17 @@ rainbowSDK.start().then(() => {
   });
 });
 
-runChatbot(projectId, "hello", "", data => {
-  console.log(data);
+// Some examples for calling the bot
+/*
+runChatbot(projectId, "What's up", "", res => {
+  rainbowSDK.im
+    .sendMessageToJid(res, message.fromJid)
+    .then(console.log("We sent the response"));
 });
+
+runChatbot(projectId, "Hello", "", res => {
+  rainbowSDK.im
+    .sendMessageToJid(res, message.fromJid)
+    .then(console.log("We sent the response"));
+});
+*/
