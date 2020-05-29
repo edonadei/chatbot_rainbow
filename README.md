@@ -12,5 +12,6 @@ To use it, you need to do a few things:
 
 ## Screen of the dialogflow conf
 ![dialogflow conf](dialogflowconf.png)
+![dialogflowconf2](dialogflow-conf-2.png)
 
 
