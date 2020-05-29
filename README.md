@@ -1,6 +1,7 @@
 ﻿# Rainbow chatbot 🤖🌈
 
 ![screen_app](screenshot_chatbot.png)
+![dialogflow conf}(dialogflowconf.png)
 
 Using rainbow platform (from Alcatel), and Google Dialogflow API
 To use it, you need to do a few things:
