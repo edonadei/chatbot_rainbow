@@ -14,7 +14,7 @@ const options = {
   // Application identifier : Application is mandatory to connect official Rainbow System.
   application: {
     appID: process.env.RAINBOW_APP_ID,
-    appSecret: process.env.RAINBOW_APP_SECRET 
+    appSecret: process.env.RAINBOW_APP_SECRET
   },
   logs: {
     enableConsoleLogs: false,
@@ -31,7 +31,7 @@ const options = {
 };
 const projectId = process.env.GCP_PROJECT_ID;
 
-async function runChatbot(projectId, query, message, callback) {
+async function runChatbot(projectId, query, nameOfUser, callback) {
   const sessionId = "123458";
   const credentials_file_path = process.env.PATH_OF_GCP_CREDS;
   const sessionClient = new dialogflow.SessionsClient({
@@ -48,6 +48,12 @@ async function runChatbot(projectId, query, message, callback) {
       text: {
         text: query,
         languageCode: "en-US"
+      }
+    },
+    queryParameter: {
+      payload: {
+        name: "name",
+        value: nameOfUser
       }
     }
   };
@@ -76,11 +82,16 @@ rainbowSDK.start().then(() => {
     console.log(
       `${message.conversation.contact._displayName}: ${message.content}`
     );
-    runChatbot(projectId, message.content, "", res => {
-      rainbowSDK.im
-        .sendMessageToJid(res, message.fromJid)
-        .then(console.log("We sent the response"));
-    });
+    runChatbot(
+      projectId,
+      message.content,
+      message.conversation.contact._displayName,
+      res => {
+        rainbowSDK.im
+          .sendMessageToJid(res, message.fromJid)
+          .then(console.log("We sent the response"));
+      }
+    );
   });
   rainbowSDK.events.on("rainbow_onmessagereceiptreceived", receipt => {
     console.log(receipt);
@@ -89,15 +100,14 @@ rainbowSDK.start().then(() => {
 
 // Some examples for calling the bot
 /*
-runChatbot(projectId, "What's up", "", res => {
+runChatbot(projectId, "What's up", res => {
   rainbowSDK.im
     .sendMessageToJid(res, message.fromJid)
     .then(console.log("We sent the response"));
 });
 
-runChatbot(projectId, "Hello", "", res => {
-  rainbowSDK.im
-    .sendMessageToJid(res, message.fromJid)
-    .then(console.log("We sent the response"));
+
+runChatbot(projectId, "Hello","Emrick", res => {
 });
+
 */
