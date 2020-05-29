@@ -1,6 +1,9 @@
 ﻿# Rainbow chatbot 🤖🌈
 
+## Screen of the chatbot on Rainbow
 ![screen_app](screenshot_chatbot.png)
+
+## Screen of the dialogflow conf
 ![dialogflow conf](dialogflowconf.png)
 
 Using rainbow platform (from Alcatel), and Google Dialogflow API
